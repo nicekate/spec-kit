@@ -427,21 +427,21 @@ def init(
 ```mermaid
 flowchart TD
     Start([开始]) --> Init[项目初始化]
-    Init --> SpecifyCmd[specify 命令]
-    SpecifyCmd --> SpecDoc[生成规格文档]
+    Init --> SpecifyStep[specify命令]
+    SpecifyStep --> SpecDoc[生成规格文档]
     SpecDoc --> Review1{规格审查}
-    Review1 -->|需要修改| SpecifyCmd
-    Review1 -->|通过| PlanCmd[plan 命令]
+    Review1 -->|需要修改| SpecifyStep
+    Review1 -->|通过| PlanStep[plan命令]
 
-    PlanCmd --> Research[技术研究]
+    PlanStep --> Research[技术研究]
     Research --> Architecture[架构设计]
     Architecture --> DataModel[数据模型]
     DataModel --> Contracts[接口契约]
     Contracts --> Review2{计划审查}
-    Review2 -->|需要修改| PlanCmd
-    Review2 -->|通过| TasksCmd[tasks 命令]
+    Review2 -->|需要修改| PlanStep
+    Review2 -->|通过| TasksStep[tasks命令]
 
-    TasksCmd --> TaskList[任务列表]
+    TasksStep --> TaskList[任务列表]
     TaskList --> Implementation[代码实现]
     Implementation --> Testing[测试验证]
     Testing --> Review3{质量审查}
