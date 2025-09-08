@@ -67,16 +67,16 @@ graph TB
         U[开发者] --> CLI[Specify CLI]
         U --> AI[AI助手<br/>Claude/Copilot/Gemini]
     end
-    
+
     subgraph "核心层"
         CLI --> Init[项目初始化]
         CLI --> Cmd[命令处理器]
-        
-        Cmd --> Specify[/specify命令]
-        Cmd --> Plan[/plan命令]
-        Cmd --> Tasks[/tasks命令]
+
+        Cmd --> SpecifyCmd[specify命令]
+        Cmd --> PlanCmd[plan命令]
+        Cmd --> TasksCmd[tasks命令]
     end
-    
+
     subgraph "模板层"
         Init --> Templates[模板系统]
         Templates --> SpecT[规格模板]
@@ -84,26 +84,26 @@ graph TB
         Templates --> TaskT[任务模板]
         Templates --> AgentT[AI助手模板]
     end
-    
+
     subgraph "脚本层"
         Scripts[Shell脚本]
         Scripts --> Setup[setup-plan.sh]
         Scripts --> Feature[create-new-feature.sh]
         Scripts --> Update[update-agent-context.sh]
     end
-    
+
     subgraph "存储层"
         FS[文件系统]
-        FS --> Specs[specs/目录]
-        FS --> Memory[memory/目录]
+        FS --> Specs[specs目录]
+        FS --> Memory[memory目录]
         FS --> Config[配置文件]
     end
-    
-    Specify --> Templates
-    Plan --> Scripts
-    Tasks --> Scripts
+
+    SpecifyCmd --> Templates
+    PlanCmd --> Scripts
+    TasksCmd --> Scripts
     Scripts --> FS
-    
+
     style U fill:#e1f5fe
     style CLI fill:#f3e5f5
     style AI fill:#fff3e0
