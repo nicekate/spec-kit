@@ -129,19 +129,19 @@ sequenceDiagram
     CLI->>AI: 配置AI助手环境
     
     Note over Dev,Git: 规格定义阶段
-    Dev->>AI: /specify 功能描述
+    Dev->>AI: specify 功能描述
     AI->>FS: 创建功能分支
     AI->>FS: 生成 spec.md
     AI->>Git: 提交规格文档
-    
+
     Note over Dev,Git: 实现规划阶段
-    Dev->>AI: /plan 技术栈和架构选择
+    Dev->>AI: plan 技术栈和架构选择
     AI->>FS: 生成 plan.md, research.md
     AI->>FS: 生成 data-model.md, contracts/
     AI->>FS: 生成 quickstart.md
-    
+
     Note over Dev,Git: 任务分解阶段
-    Dev->>AI: /tasks
+    Dev->>AI: tasks
     AI->>FS: 生成 tasks.md
     AI->>Dev: 返回可执行任务列表
     
@@ -428,28 +428,28 @@ def init(
 ```mermaid
 flowchart TD
     Start([开始]) --> Init[项目初始化]
-    Init --> Specify[/specify 命令]
-    Specify --> SpecDoc[生成规格文档]
+    Init --> SpecifyCmd[specify 命令]
+    SpecifyCmd --> SpecDoc[生成规格文档]
     SpecDoc --> Review1{规格审查}
-    Review1 -->|需要修改| Specify
-    Review1 -->|通过| Plan[/plan 命令]
-    
-    Plan --> Research[技术研究]
+    Review1 -->|需要修改| SpecifyCmd
+    Review1 -->|通过| PlanCmd[plan 命令]
+
+    PlanCmd --> Research[技术研究]
     Research --> Architecture[架构设计]
     Architecture --> DataModel[数据模型]
     DataModel --> Contracts[接口契约]
     Contracts --> Review2{计划审查}
-    Review2 -->|需要修改| Plan
-    Review2 -->|通过| Tasks[/tasks 命令]
-    
-    Tasks --> TaskList[任务列表]
+    Review2 -->|需要修改| PlanCmd
+    Review2 -->|通过| TasksCmd[tasks 命令]
+
+    TasksCmd --> TaskList[任务列表]
     TaskList --> Implementation[代码实现]
     Implementation --> Testing[测试验证]
     Testing --> Review3{质量审查}
     Review3 -->|需要修改| Implementation
     Review3 -->|通过| Deploy[部署发布]
     Deploy --> End([完成])
-    
+
     style Start fill:#e1f5fe
     style End fill:#e8f5e8
     style Review1 fill:#fff3e0
