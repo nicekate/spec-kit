@@ -63,21 +63,20 @@ Spec Kit 是一个革命性的软件开发工具包，实现了"规格驱动开�
 
 ```mermaid
 graph TB
-    subgraph "用户层"
+    subgraph UserLayer["用户层"]
         U[开发者] --> CLI[Specify CLI]
-        U --> AI[AI助手<br/>Claude/Copilot/Gemini]
+        U --> AI[AI助手]
     end
 
-    subgraph "核心层"
+    subgraph CoreLayer["核心层"]
         CLI --> Init[项目初始化]
         CLI --> Cmd[命令处理器]
-
         Cmd --> SpecifyCmd[specify命令]
         Cmd --> PlanCmd[plan命令]
         Cmd --> TasksCmd[tasks命令]
     end
 
-    subgraph "模板层"
+    subgraph TemplateLayer["模板层"]
         Init --> Templates[模板系统]
         Templates --> SpecT[规格模板]
         Templates --> PlanT[计划模板]
@@ -85,14 +84,14 @@ graph TB
         Templates --> AgentT[AI助手模板]
     end
 
-    subgraph "脚本层"
+    subgraph ScriptLayer["脚本层"]
         Scripts[Shell脚本]
         Scripts --> Setup[setup-plan.sh]
         Scripts --> Feature[create-new-feature.sh]
         Scripts --> Update[update-agent-context.sh]
     end
 
-    subgraph "存储层"
+    subgraph StorageLayer["存储层"]
         FS[文件系统]
         FS --> Specs[specs目录]
         FS --> Memory[memory目录]
